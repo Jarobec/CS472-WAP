@@ -1,0 +1,270 @@
+<!--
+    Assignment 7 - Closures
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Assignment 7 - Closures" />
+    <meta name="keywords" content="WAP, Assignment, CS472" />
+    <meta name="author" content="Jargal Ganbaatar" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Closures</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <h2>Assignment 7 - Closures</h2>
+        <fieldset>
+          <legend>
+            1. Determine what this Javascript code will print out (without
+            running it):
+          </legend>
+          <pre>
+            x = 1;
+            var a = 5;
+            var b = 10;
+            var c = function (a, b, c) {
+              document.write(x);
+              document.write(a);
+              var f = function (a, b, c) {
+                b = a;
+                document.write(b);
+                b = c;
+                var x = 5;
+              };
+              f(a, b, c);
+              document.write(b);
+              var x = 10;
+            };
+            c(8, 9, 10);
+            document.write(b);
+            document.write(x);
+        </pre
+          >
+          Result is :
+          <div class="result">
+            <span class="output">undefined</span>
+            <span class="explanation"
+              >"x" is defined again at the bottom of function "c". If it has not
+              with the var keyword, it will show the value of the global "x"
+              variable.
+            </span>
+          </div>
+          <div class="result">
+            <span class="output">8</span>
+            <span class="explanation"
+              >"a" is a parameter of function "c". Number 8 is assigned to
+              "a".</span
+            >
+          </div>
+          <div class="result">
+            <span class="output">8 </span>
+            <span class="explanation"
+              >"b" is a parameter of function "f". A parameter "a" is assigned
+              to a parameter "b"</span
+            >
+          </div>
+          <div class="result">
+            <span class="output">9 </span>
+            <span class="explanation"
+              >"b" is a parameter of function "c". A function "f" cannot affect
+              it.</span
+            >
+          </div>
+          <div class="result">
+            <span class="output">10</span
+            ><span class="explanation"
+              >In this case, "b" is a global variable. It is separate from
+              parameters.
+            </span>
+          </div>
+          <div class="result">
+            <span class="output">1 </span>
+            <span class="explanation"
+              >The function "c" and "f" are redefined "x" variable. The value of
+              "x" only changed on function scope.</span
+            >
+          </div>
+        </fieldset>
+        <hr />
+        <fieldset>
+          <legend>2. Define Global Scope and Local Scope in Javascript.</legend>
+          <pre>
+            // Global Scope
+            var courseName = "Web Application Programming";
+
+            const getStudents = function () {
+                let total = 0; // Local Scope
+                total += 1;
+                courseT = "WAP"; // Global Scope
+                return total;
+            };
+          </pre>
+          Explanation is :
+          <div class="result">
+            <span class="output">Global Scope:</span
+            ><span class="explanation"
+              >The declared variable using var, let and const is not inside of a
+              function. If a variable is not using keyword (var, let, const), it
+              will be Global Scope. It can be inside of a function.
+            </span>
+          </div>
+          <div class="result">
+            <span class="output">Local Scope:</span
+            ><span class="explanation"
+              >If a variable is declared using var, let, and const inside of a
+              function.</span
+            >
+          </div>
+        </fieldset>
+        <hr />
+        <fieldset>
+          <legend>
+            3. Consider the following structure of Javascript code:
+            <br />
+            (a) Do statements in Scope A have access to variables defined in
+            Scope B and C?
+            <br />
+            (b) Do statements in Scope B have access to variables defined in
+            Scope A?
+            <br />
+            (c) Do statements in Scope B have access to variables defined in
+            Scope C?
+            <br />
+            (d) Do statements in Scope C have access to variables defined in
+            Scope A?
+            <br />
+            (e) Do statements in Scope C have access to variables defined in
+            Scope B?
+          </legend>
+          <pre>
+            //Scope A
+            function XFunc() {
+              // Scope B
+              function YFunc() {
+                //Scope C
+              }
+            }
+            </pre
+          >
+          Explanation is :
+          <div class="result">
+            <span class="output">(a)</span>
+            <span class="explanation"
+              >Scope "A" is Global scope. Scope "B" is the Function scope. Scope
+              "C" is Function scope inside of function "XFunc". So, the Global
+              scope cannot access variables defined in the Function scope.</span
+            >
+          </div>
+          <div class="result">
+            <span class="output">(b)</span>
+            <span class="explanation">
+              The Function scope "B" can access variables defined in the Global
+              Scope "A".
+            </span>
+          </div>
+          <div class="result">
+            <span class="output">(c)</span
+            ><span class="explanation"
+              >Scope "C" is Function scope inside of Scope "B". So, "B" cannot
+              access variables defined in the "C".</span
+            >
+          </div>
+          <div class="result">
+            <span class="output">(d)</span>
+            <span class="explanation"
+              >The Function scope "C" can access variables defined in the Global
+              Scope "A".</span
+            >
+          </div>
+          <div class="result">
+            <span class="output">(e)</span
+            ><span class="explanation"
+              >Scope "C" is Function scope inside of Scope "B". So, "C" can
+              access variables defined in the "B".</span
+            >
+          </div>
+        </fieldset>
+        <hr />
+        <fieldset>
+          <legend>
+            4. What will be printed by the following (answer without running
+            it)?
+          </legend>
+          <pre>
+            var x = 9;
+            function myFunction() {
+              return x * x;
+            }
+            document.write(myFunction());
+            x = 5;
+            document.write(myFunction());
+            </pre
+          >
+          Result is :
+          <div class="result">
+            <span class="output">81</span>
+            <span class="explanation"
+              >This code declared "x" variable in Global scope. The function
+              "myFunction" accessed the Global variable "x" and produced return
+              value.</span
+            >
+          </div>
+          <div class="result">
+            <span class="output">25</span>
+            <span class="explanation"
+              >"x = 5" means assigned new value for the Global variable "x". So,
+              the function "myFunction" produced return value using new "x"
+              value.</span
+            >
+          </div>
+        </fieldset>
+        <hr />
+        <fieldset>
+          <legend>
+            5. What will the alert print out? (Answer without running the code.
+            Remember "hoisting".)?
+          </legend>
+          <pre>
+            var foo = 1;
+            function bar() {
+              if (!foo) {
+                var foo = 10;
+              }
+              alert(foo);
+            }
+            bar();
+            </pre
+          >
+          Result is :
+          <div class="result">
+            <span class="output">10</span>
+            <span class="explanation"
+              >A variable "foo" is redefined inside of function "bar". It is
+              Hoisting. So, a variable "foo" will be "undefined". Then "if
+              condition" will be true. After that value of "foo" is changed to
+              10. Then "alert" will show 10.</span
+            >
+          </div>
+        </fieldset>
+        <hr />
+      </div>
+    </div>
+  </body>
+</html>

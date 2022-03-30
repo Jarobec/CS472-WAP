@@ -1,0 +1,23 @@
+{
+  "name": "assignment13",
+  "version": "1.0.0",
+  "description": "Assignment 13 - Node JS and Express JS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx nodemon server"
+  },
+  "keywords": [
+    "WAP",
+    "Assignment",
+    "CS472"
+  ],
+  "author": "Jargal Ganbaatar",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}

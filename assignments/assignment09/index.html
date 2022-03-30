@@ -1,0 +1,239 @@
+<!--
+    Assignment 9 - Using Inheritance
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Assignment 9 - Using Inheritance" />
+    <meta name="keywords" content="WAP, Assignment, CS472" />
+    <meta name="author" content="Jargal Ganbaatar" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Using Inheritance</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <h2>Assignment 9 - Using Inheritance</h2>
+        <fieldset>
+          <legend>
+            1. Define a JavaScript object literal named, person, with the
+            following specification:
+          </legend>
+          <ul>
+            <li>
+              Person object should have the properties:
+              <ol>
+                <li>name (initialize this with empty string value)</li>
+                <li>
+                  dateOfBirth (initialize this with empty string value or null)
+                </li>
+              </ol>
+            </li>
+            <li>
+              Person object should have the methods:
+              <ol>
+                <li>
+                  getName (should return the value of the person’s name
+                  property)
+                </li>
+                <li>
+                  setName (should take as input parameter, a String value which
+                  it sets as the person’s name)
+                </li>
+              </ol>
+            </li>
+          </ul>
+          <p>
+            Given that someone named John IS-A person, applying JavaScript
+            inheritance and the Object.create(…) method, create an object named,
+            john, whose name property is set to the string, “John” and whose
+            dateOfBirth property is set to the date, December 10th, 1998.
+          </p>
+          <p>
+            Print-out to the console, the information about the person named
+            John, in the following format: <br />“The person’s name is John”
+            <br />“John was born on 1998-12-10”
+          </p>
+          Result is :
+          <div class="result">
+            <pre>
+                const person = {
+                    name: "",
+                    dateOfBirth: null,
+                    getName: function () {
+                      return this.name;
+                    },
+                    setName: function (newName) {
+                      this.name = newName;
+                    },
+                  };
+                  
+                  const john = Object.create(person, {
+                    name: {
+                      writable: true,
+                      configurable: true,
+                      enumerable: true,
+                      value: "John",
+                    },
+                    dateOfBirth: {
+                      value: new Date(1998, 11, 10),
+                    },
+                  });
+                  
+                  console.log("The person's name is " + john.getName());
+                  console.log(
+                    john.getName() +
+                      " was born on " +
+                      john.dateOfBirth.getFullYear() +
+                      "-" +
+                      (john.dateOfBirth.getMonth() + 1) +
+                      "-" +
+                      john.dateOfBirth.getDate()
+                  );
+
+                  ---------- Question 1 ----------
+                  The person's name is John
+                  John was born on 1998-12-10
+            </pre>
+          </div>
+        </fieldset>
+        <hr />
+        <fieldset>
+          <legend>
+            2. Given that an Employee IS-A person, applying JavaScript
+            inheritance and the Object.create(…) method, create a generic object
+            named, employee, with the following properties:
+          </legend>
+          <ul>
+            <li>Salary (initialize this with the value zero dollars</li>
+            <li>hireDate (initialize this with the current date of today)</li>
+            and the following method:
+            <li>
+              doJob (should take as input parameter, a string representing the
+              jobTitle of the employee and it prints-out to the console, the
+              employee’s information in the following format:
+              <br />
+              <br />
+              “[Employee’s name] is a [jobTitle] who earns $[salary]”<br />
+              e.g. Anna is a Programmer who earns $249,995.50
+            </li>
+          </ul>
+          <p>
+            Create an employee named, Anna, set their salary to $249.995.50 and
+            call the doJob() method, passing it the jobtitle, Programmer.
+          </p>
+          <p>
+            Note the console output should be: Anna is a Programmer who earns
+            $249,995.50
+          </p>
+          Result is :
+          <div class="result">
+            <pre>
+                const employee = Object.create(person, {
+                    salary: { 
+                        writable: true, 
+                        configurable: true, 
+                        enumerable: true, 
+                        value: 0,
+                    },
+                    hireDate: {
+                      writable: true,
+                      configurable: true,
+                      enumerable: true,
+                      value: new Date(),
+                    },
+                    doJob: {
+                      value: function (jobTitle) {
+                        return (
+                          this.name +
+                          " is a " +
+                          jobTitle +
+                          " who earns " +
+                          new Intl.NumberFormat("en-US", {
+                            style: "currency",
+                            currency: "USD",
+                          }).format(this.salary)
+                        );
+                      },
+                    },
+                  });
+                  
+                  const anna = employee;
+                  anna.setName("Anna");
+                  anna.salary = 249995.5;
+                  console.log(anna.doJob("Programmer"));
+
+                  ---------- Question 2 ----------
+                  Anna is a Programmer who earns $249,995.50
+            </pre>
+          </div>
+        </fieldset>
+        <hr />
+        <fieldset>
+          <legend>
+            3. Re-write the person object specification described in Question 1
+            above, but this time, using a Constructor Function named, Person.
+            Then, add a method named, toString() to the person object, which
+            return the string representation of the person object data in the
+            format:
+          </legend>
+          <p>{Name: John, DateOfBirth: 1998-12-10}</p>
+          <p>
+            Using your constructor function for the person object, create a
+            person named, Peter, whose date of birth is November 10, 1985.
+          </p>
+          <p>
+            Print-out to the console, the information for the person named,
+            Peter, using its toString() method.
+          </p>
+          Result is :
+          <div class="result">
+            <pre>
+                function Person() {}
+                person.toString = function () {
+                    return (
+                        "{Name: " +
+                        this.name +
+                        ", DateOfBirth: " +
+                        this.dateOfBirth.getFullYear() +
+                        "-" +
+                        (this.dateOfBirth.getMonth() + 1) +
+                        "-" +
+                        this.dateOfBirth.getDate() +
+                        "}"
+                    );
+                };
+                Person.prototype = person;
+
+                const peter = new Person();
+                peter.setName("Peter");
+                peter.dateOfBirth = new Date(1985, 10, 10);
+                console.log(peter.toString());
+
+                ---------- Question 3 ----------
+                {Name: Peter, DateOfBirth: 1985-11-10}
+            </pre>
+          </div>
+        </fieldset>
+        <hr />
+      </div>
+    </div>
+  </body>
+</html>

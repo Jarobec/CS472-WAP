@@ -1,0 +1,262 @@
+<!--
+    Assignment 8 - Objects and Modules
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Assignment 8 - Objects and Modules" />
+    <meta name="keywords" content="WAP, Assignment, CS472" />
+    <meta name="author" content="Jargal Ganbaatar" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Objects and Modules</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <h2>Assignment 8 - Objects and Modules</h2>
+        <fieldset>
+          <legend>
+            6. Consider the following definition of an add() function to
+            increment a counter variable:
+          </legend>
+          <pre>
+            var add = (function () {
+              var counter = 0;
+              return function () {
+                return (counter += 1);
+              };
+            })();
+            
+            Modify the above module to define a count object with two methods: add() and reset().
+            The count.add() adds one to the counter (as above). 
+            The count.reset() method sets the counter to 0.
+            </pre
+          >
+          Result is :
+          <div class="result">
+            <pre>
+              var count = (function () {
+                var counter = 0;
+              
+                var add = function () {
+                  return (counter += 1);
+                };
+                var reset = function () {
+                  return (counter = 0);
+                };
+                return {
+                  add: add,
+                  reset: reset,
+                };
+              })();
+            </pre>
+          </div>
+        </fieldset>
+        <hr />
+        <fieldset>
+          <legend>
+            7. In the definition of add() shown in question 6, identify the
+            "free" variable. In the context of a function closure, what is a
+            "free" variable?
+          </legend>
+          <pre>
+            var add = (function () {
+              var counter = 0;
+              return function () {
+                return (counter += 1);
+              };
+            })();
+          </pre>
+          Result is :
+          <div class="result">
+            <span class="output">counter</span>
+            <span class="explanation"
+              >The function "add" includes the anonymous function and local
+              variable "counter". So, the anonymous function uses the variable
+              "counter" of their outer function and returns the calculated
+              value. It means the variable "counter" is a free variable.</span
+            >
+          </div>
+        </fieldset>
+        <hr />
+        <fieldset>
+          <legend>
+            8. To add() function defined in question 6 always adds 1 to the
+            counter each time it is called. Write a definition of a function
+            make_adder(inc), whose return value is an add function with
+            increment value inc (instead of 1). Here is an example of using this
+            function:
+          </legend>
+          <pre>
+            add5 = make_adder(5);
+            add5(); add5(); add5(); // final counter value is 15
+
+            add7 = make_adder(7);
+            add7(); add7(); add7(); // final counter value is 21
+          </pre>
+          Result is :
+          <div class="result">
+            <pre>
+              var make_adder = function (inc) {
+                var counter = 0;
+              
+                add = function (value) {
+                  return (counter += value);
+                };
+                reset = function () {
+                  return (counter = 0);
+                };
+                return {
+                  add: function () {
+                    return add(inc);
+                  },
+                  reset: reset,
+                };
+              };
+
+              var add5 = make_adder(5);
+              console.log(add5.add());
+              console.log(add5.add());
+              console.log(add5.add()); // final counter value is 15
+
+              var add7 = make_adder(7);
+              console.log(add7.add());
+              console.log(add7.add());
+              console.log(add7.add()); // final counter value is 21
+            </pre>
+          </div>
+        </fieldset>
+        <hr />
+        <fieldset>
+          <legend>
+            9. Suppose you are given a file of Javascript code containing a list
+            of many function and variable declarations. All of these function
+            and variable names will be added to the Global Javascript namespace.
+            What simple modification to the Javascript file can remove all the
+            names from the Global namespace?
+          </legend>
+          Result is :
+          <div class="result">
+            <span class="explanation">
+              I need to move all of these functions and variables to function
+              scope or block scope. Using the IIFE pattern, I can decide this
+              situation.</span
+            >
+          </div>
+        </fieldset>
+        <hr />
+        <fieldset>
+          <legend>
+            10. Using the Revealing Module Pattern, write a Javascript
+            definition of a Module that creates an Employee object with the
+            following fields and methods:
+          </legend>
+          Result is :
+          <div class="result">
+            <pre>
+              var employee = (function () {
+                var name, age, salary;
+              
+                var getName = function () {
+                  return name;
+                };
+              
+                var setName = function (newName) {
+                  name = newName;
+                };
+              
+                var getAge = function () {
+                  return age;
+                };
+              
+                var setAge = function (newAge) {
+                  age = newAge;
+                };
+              
+                var getSalary = function () {
+                  return salary;
+                };
+              
+                var setSalary = function (newSalary) {
+                  salary = newSalary;
+                };
+              
+                var incrementAge = function () {
+                  setAge(getAge() + 1);
+                  return getAge();
+                };
+              
+                var increaseSalary = function (percentage) {
+                  var tmpSalary = getSalary();
+                  setSalary(tmpSalary + tmpSalary * (percentage / 100));
+                  return getSalary();
+                };
+              
+                var toString = function () {
+                  return getName() + " " + getAge() + " " + getSalary();
+                };
+              
+                return {
+                  setName: setName,
+                  setAge: setAge,
+                  setSalary: setSalary,
+                  incrementAge: incrementAge,
+                  increaseSalary: increaseSalary,
+                  toString: toString,
+                };
+              })();
+
+              employee.setName("Jargal");
+              employee.setAge(29);
+              employee.setSalary(300000);
+              employee.incrementAge();
+              employee.increaseSalary(30);
+              console.log(employee.toString());
+            </pre>
+          </div>
+        </fieldset>
+        <hr />
+        <fieldset>
+          <legend>
+            11. Write a few Javascript instructions to extend the Module of
+            Question 10 to have a public address field and public methods
+            setAddress(newAddress) and getAddress().
+          </legend>
+          Result is :
+          <div class="result">
+            <pre>
+              employee.address = "";
+              employee.setAddress = (newAddress) => {
+                address = newAddress;
+              };
+              employee.getAddress = () => {
+                return address;
+              };
+
+              employee.setAddress("Fairfield, IA 52557");
+              console.log(employee.getAddress());
+            </pre>
+          </div>
+        </fieldset>
+        <hr />
+      </div>
+    </div>
+  </body>
+</html>

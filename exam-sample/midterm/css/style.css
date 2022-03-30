@@ -1,0 +1,105 @@
+/* Sample Midterm Exam CSS style */
+/* Author: Jargal Ganbaatar */
+/* WAP, Exam, Midterm, CS472 */
+
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  font-size: 12px;
+}
+
+nav {
+  background-color: chocolate;
+}
+
+.navbar span {
+  color: rgb(255, 255, 255);
+}
+
+.nav-item {
+  border-left: 1px solid rgba(255, 255, 255, 0.55);
+  margin-left: 30px;
+  padding-left: 30px;
+}
+
+.border-active {
+  border-left: 1px solid rgb(255, 255, 255);
+}
+
+.image {
+  background-image: url("../images/bk.png");
+  background-size: 80% 250px;
+  background-repeat: repeat-x;
+  height: 250px;
+  margin-bottom: 10px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.phone {
+  color: dodgerblue;
+  text-decoration: underline;
+}
+
+#email {
+  color: chocolate;
+}
+
+.horizontal-radio {
+  display: flex;
+  flex-flow: row;
+}
+
+.horizontal-radio > .form-check {
+  margin-right: 10px;
+}
+
+.buttons {
+  text-align: right;
+}
+
+.buttons .btn {
+  padding: 5px 30px;
+}
+
+.btn-success:hover {
+  background-color: rgb(167, 100, 53);
+  border-color: rgb(167, 100, 53);
+}
+
+.btn-success {
+  background-color: chocolate;
+  border-color: chocolate;
+}
+
+.btn-success:focus {
+  box-shadow: chocolate;
+}
+
+.table {
+  border-bottom: transparent;
+  border-top: 1px solid #dee2e6;
+}
+
+.table > :not(:first-child) {
+  border-top: #dee2e6 1px solid;
+}
+
+footer {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  bottom: 0;
+  width: 100%;
+  padding: 10px 15px;
+  background-color: rgb(241, 239, 239);
+  font-size: 14px;
+}

@@ -1,0 +1,42 @@
+/* Assignment 4 - Web Form 2 CSS style */
+/* Author: Jargal Ganbaatar */
+/* WAP, Assignment, CS472 */
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+nav {
+  background-color: #30a5e7;
+}
+
+.navbar-dark .navbar-text {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.nav-item {
+  border-left: 1px solid white;
+  margin-left: 30px;
+  padding-left: 30px;
+}
+
+.btn-sign-out {
+  background-image: linear-gradient(to bottom right #fefefe, #dfe4e8);
+  color: #5f6561;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 15px;
+}
+
+.d-flex .btn-gap {
+  margin-left: 40px;
+}
+
+.d-flex span {
+  padding-right: 10px;
+}
+
+.form-text {
+  font-size: 13px;
+  color: #868e96;
+}

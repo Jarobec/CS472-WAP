@@ -1,0 +1,57 @@
+/* main.css */
+
+html {
+    min-height: 100%;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: medium;
+    min-height: 100%;
+    margin-bottom: 60px;
+}
+header {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    background-color: #424242;
+    height: 4em;
+    width: 100%;
+}
+nav {
+    margin: 0em;
+}
+a#hyplnkAppBranding {
+    color: #efefef;
+    text-decoration: none;
+    font-size: 1.5em;
+}
+ul#ulNavItems > li {
+    display: inline;
+    list-style-type: none;
+}
+a.hyplnkNavItem {
+    color: #efefef;
+    text-decoration: none;
+    font-size: large;
+    border-left: 1px solid #efefef;
+    margin-left: 1em;
+    padding-left: 1em;
+}
+div#divHeaderRightContent {
+    margin-right: 1em; 
+    border: 0px solid #efefef; 
+    width: 100%; 
+    display: inline; 
+    color: #efefef;
+}
+div#mainContent {
+    display: grid;
+    place-items: center;
+    width: 100%;
+}
+div#mainContent article {
+    border: 1px solid black;
+    padding-left: 1em;
+}

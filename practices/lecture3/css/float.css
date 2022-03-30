@@ -1,0 +1,28 @@
+.container {
+  background-color: pink;
+  max-width: 800px;
+  height: 600px;
+  margin: auto;
+  padding: 10px 20px;
+  overflow: auto;
+}
+
+.cards {
+  background-color: aquamarine;
+  padding: 10px 20px;
+  height: 80%;
+  margin: auto;
+  overflow: auto;
+}
+
+.card {
+  float: left;
+  background-color: cornflowerblue;
+  width: 150px;
+  height: 150px;
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+}

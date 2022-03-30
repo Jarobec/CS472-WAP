@@ -1,0 +1,25 @@
+{
+  "name": "assignment14",
+  "version": "1.0.0",
+  "description": "Assignment 14 - Implement the MiniBank webapp using NodeJS+Express.JS+Database",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "WAP",
+    "Assignment",
+    "CS472"
+  ],
+  "author": "Jargal Ganbaatar",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "express": "^4.17.3",
+    "mysql2": "^2.3.3",
+    "pug": "^3.0.2"
+  }
+}

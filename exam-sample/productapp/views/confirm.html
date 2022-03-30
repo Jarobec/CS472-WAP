@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Products Mgmt WebApp - an Express.JS Routing Demo</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        header {
+            display: flex;
+            width: 100%;
+            height: 10vh;
+            align-items: center;
+            background-color: blue;
+        }
+        nav {
+            margin: 0em;
+        }
+        nav h1 {
+            color:aliceblue;
+        }
+        a#hyplnkAppBranding {
+            color: #efefef;
+            text-decoration: none;
+            font-size: 1.5em;
+        }
+        ul#ulNavItems > li {
+            display: inline;
+            list-style-type: none;
+        }
+        a.hyplnkNavItem {
+            color: #efefef;
+            text-decoration: none;
+            font-size: large;
+            border-left: 1px solid #efefef;
+            margin-left: 1em;
+            padding-left: 1em;
+        }
+        div#divHeaderRightContent {
+            margin-right: 1em; 
+            border: 0px solid #efefef; 
+            width: 100%; 
+            display: inline; 
+            color: #efefef;
+        }    
+        div.form-control-row {
+            margin-bottom: .5em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul id="ulNavItems">
+                <li>
+                    <a id="hyplnkAppBranding" href="/">
+                        My Products Mgmt WebApp - an Express.JS Routing Demo
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div id="divHeaderRightContent">
+            <span style="float: right;">Welcome, Guest</span>
+        </div>        
+    </header>
+    <main style="margin-left: 2em;margin-right: 2em;">
+        <h2>Your New Product data has been added</h2>
+        <section>
+            <p>
+                <a href="/product-form">Add another new Product</a> | 
+                <a href="/">Home</a>
+            </p>
+        </section>
+    </main>
+</body>
+</html>
